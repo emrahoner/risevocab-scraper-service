@@ -1,0 +1,38 @@
+name: $(EmonsProjects.Version)-alpha.$(Rev:r)
+
+variables:
+  - group: EmonsProjects.Common.Configurations
+  - group: VocRise.Dev.Configurations
+  - group: VocRise.DictionaryService.Configurations
+  - name: EmonsProjects.Version
+    value: 0.0.0
+
+trigger:
+  - master
+
+pr: none
+
+pool:
+  name: Azure Pipelines
+  vmImage: ubuntu-latest
+
+steps:
+- task: Docker@2
+  displayName: Login to Container Registry
+  inputs:
+    command: login
+    containerRegistry: $(EmonsProjects.ContainerRegistryConnection)
+- task: Docker@2
+  displayName: Build and Push Docker Image
+  inputs:
+    command: buildAndPush
+    dockerFile: dockerfile
+    repository: $(EmonsProjects.ProjectName)/$(EmonsProjects.AppName)
+    tags: |
+     latest
+     $(Build.BuildNumber)
+- task: Docker@2
+  displayName: Logout of Container Registry
+  inputs:
+    command: logout
+    containerRegistry: $(EmonsProjects.ContainerRegistryConnection)

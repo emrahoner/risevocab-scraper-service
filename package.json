@@ -1,0 +1,33 @@
+{
+  "name": "risevocab-scraper-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "local_port": 9002
+  },
+  "scripts": {
+    "build:run:docker": "sh ./build-run-docker.sh ${npm_package_name} ${npm_package_config_local_port} dockerfile",
+    "debug": "node --inspect index.js",
+    "start:local": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emrahoner/risevocab-scraper-service.git"
+  },
+  "author": "Emrah Oner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emrahoner/risevocab-scraper-service/issues"
+  },
+  "homepage": "https://github.com/emrahoner/risevocab-scraper-service#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
