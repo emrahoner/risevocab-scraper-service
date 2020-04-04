@@ -3,7 +3,7 @@ name: $(RiseVocab.Version)-alpha.$(Rev:r)
 variables:
   - group: RiseVocab.Common.Configurations
   - group: RiseVocab.Dev.Configurations
-  - group: RiseVocab.DictionaryService.Configurations
+  - group: RiseVocab.ScraperService.Configurations
   - name: RiseVocab.Version
     value: 0.0.0
 
