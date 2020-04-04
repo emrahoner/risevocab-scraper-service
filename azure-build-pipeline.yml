@@ -1,10 +1,10 @@
-name: $(EmonsProjects.Version)-alpha.$(Rev:r)
+name: $(RiseVocab.Version)-alpha.$(Rev:r)
 
 variables:
-  - group: EmonsProjects.Common.Configurations
-  - group: VocRise.Dev.Configurations
-  - group: VocRise.DictionaryService.Configurations
-  - name: EmonsProjects.Version
+  - group: RiseVocab.Common.Configurations
+  - group: RiseVocab.Dev.Configurations
+  - group: RiseVocab.DictionaryService.Configurations
+  - name: RiseVocab.Version
     value: 0.0.0
 
 trigger:
@@ -21,13 +21,13 @@ steps:
   displayName: Login to Container Registry
   inputs:
     command: login
-    containerRegistry: $(EmonsProjects.ContainerRegistryConnection)
+    containerRegistry: $(RiseVocab.ContainerRegistryConnection)
 - task: Docker@2
   displayName: Build and Push Docker Image
   inputs:
     command: buildAndPush
     dockerFile: dockerfile
-    repository: $(EmonsProjects.ProjectName)/$(EmonsProjects.AppName)
+    repository: $(RiseVocab.ProjectName)/$(RiseVocab.AppName)
     tags: |
      latest
      $(Build.BuildNumber)
@@ -35,4 +35,4 @@ steps:
   displayName: Logout of Container Registry
   inputs:
     command: logout
-    containerRegistry: $(EmonsProjects.ContainerRegistryConnection)
+    containerRegistry: $(RiseVocab.ContainerRegistryConnection)

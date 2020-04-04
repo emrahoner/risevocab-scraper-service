@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 const configManager = new ConfigManager({
-    namespace: 'EmonsProjects'
+    namespace: 'RiseVocab'
 })
 
 module.exports = configManager.getConfigs()

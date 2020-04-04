@@ -1,16 +1,22 @@
 const path = require('path')
 
+// Example options object
+// {
+//     type: 'env',
+//     namespace: 'ABC',
+//     mergeWith: {
+//         local: {
+//             type: 'file',
+//             file: 'local.json'
+//         },
+//         test: {
+//             type: 'env',
+//             namespace: 'ABC.TEST'
+//         }
+//     }
+// }
 const defaultOptions = {
-    type: 'env',
-    mergeWith: {
-        local: {
-            type: 'file',
-            file: 'local.json'
-        },
-        test: {
-
-        }
-    }
+    type: 'env'
 }
 
 const configGetters = {
